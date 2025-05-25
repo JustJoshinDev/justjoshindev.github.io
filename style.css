@@ -1,51 +1,162 @@
+/* Reset + Base */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
+html, body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  min-height: 100vh;
 }
 
+/* Header */
 header {
   background-color: #333;
-  color: #fff;
-  padding: 1.5rem;
-  text-align: center;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 header h1 {
+  font-size: 1.75rem;
   margin-bottom: 0.5rem;
 }
 
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 nav a {
-  color: #ddd;
-  margin: 0 1rem;
+  color: #ccc;
   text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 500;
 }
 
 nav a:hover {
-  color: #fff;
+  color: white;
 }
 
+nav a.active {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Main content */
 main {
   padding: 2rem;
-  max-width: 800px;
-  margin: auto;
 }
 
-section {
-  margin-bottom: 2rem;
+/* Page transitions */
+.page {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
+.page.active {
+  display: block;
+}
+
+.page.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* NOW Page Styling */
+#now {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+#now h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+#now ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+#now li {
+  margin: 0.75rem 0;
+  padding-left: 1.2rem;
+  text-indent: -1.2rem;
+}
+
+#now li::before {
+  content: "–";
+  padding-right: 0.5rem;
+  color: #666;
+}
+
+#now p em {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* About & Other Pages */
+#about, #home, #projects {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#about h2,
+#home h2,
+#projects h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+/* Projects Page List */
+#projects ul {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+#projects li {
+  margin-bottom: 0.75rem;
+}
+
+/* Footer */
 footer {
-  background-color: #222;
-  color: #ccc;
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
+  background-color: #eee;
   font-size: 0.9rem;
+  color: #555;
+  margin-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header, main {
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
