@@ -51,6 +51,25 @@ nav a.active {
   font-weight: bold;
   text-decoration: underline;
 }
+.logo-link {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.logo-icon {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.logo-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
 
 /* Main content */
 main {
