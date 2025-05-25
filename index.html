@@ -10,21 +10,72 @@
   <header>
     <h1>Josh Parker</h1>
     <nav>
-      <a href="#">Home</a>
-      <a href="#about">About</a>
+      <a href="#" data-page="home" class="active">Home</a>
+      <a href="#" data-page="now">Now</a>
+      <a href="#" data-page="projects">Projects</a>
+      <a href="#" data-page="about">About</a>
     </nav>
   </header>
 
   <main>
-    <section id="about">
+    <section id="home" class="page active">
+      <h2>Welcome!</h2>
+      <p>This is my personal site. I make music, write stories, and code in Python!</p>
+    </section>
+
+  <section id="now" class="page">
+    <h2>What I'm Doing Now</h2>
+    <p>This page is a reflection of what I'm currently focused on. Inspired by <a href="https://nownownow.com" target="_blank">nownownow.com</a>.</p>
+    <ul>
+      <li><strong>🎵 Music:</strong> Writing and producing original music — lots of experimenting with percussion and electric recently. Fav Artists RN: TOP, Half-Alive, Raynes.</li>
+      <li><strong>🧑‍💻 Programming:</strong> Working on mDirt v3 (and related projects) to make Minecraft datapack creation less painful.</li>
+      <li><strong>✍️ Writing:</strong> Expanding the Nexus storyline and worldbuilding across the Echoverse.</li>
+      <li><strong>📚 Reading:</strong> Just finished a Stormlight Archive reread and Fellowship of the Ring. Looking into some Sci-Fi stuff.</li>
+      <li><strong>🧠 Learning:</strong> Trying to get better at UI/UX design and animation in code. Brushing up on my backend coding; it's been a minute.</li>
+    </ul>
+   <p><em>Last updated: May 25, 2025</em></p>
+  </section>
+
+
+    <section id="projects" class="page">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>mDirt:</strong> A tool for easier Minecraft Datapack creation</li>
+        <li><strong>Echoverse:</strong> A unvierse or stories spaning across thousands of years on multiple planets. 
+        <li><strong>Music Projects:</strong> <a href="https://www.youtube.com/@Josh-Makes-Music" target="_blank">YouTube Channel</a></li>
+      </ul>
+    </section>
+
+    <section id="about" class="page">
       <h2>About</h2>
-      <p>Hey There! My name is Josh Parker, and I make music, art, stories, and I write some occasional code.</p>
-      <p>Currently working on: mDirt (making Datapacks is really tedious) version 3!</p>
+      <p>Hey there! I'm Josh Parker — musician, coder, and storyteller.</p>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Josh Parker. All rights reserved.</p>
   </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll("nav a");
+    const pages = document.querySelectorAll(".page");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const target = link.getAttribute("data-page");
+
+        pages.forEach(page => {
+          page.classList.remove("active", "fade-in");
+        });
+
+        navLinks.forEach(nav => nav.classList.remove("active"));
+        link.classList.add("active");
+
+        const targetPage = document.getElementById(target);
+        targetPage.classList.add("active", "fade-in");
+      });
+    });
+  </script>
 </body>
 </html>
