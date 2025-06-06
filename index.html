@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,10 +14,10 @@
     </a>
     <h1>Josh Parker</h1>
     <nav>
-      <a href="#" data-page="home" class="active">Home</a>
-      <a href="#" data-page="now">Now</a>
-      <a href="#" data-page="projects">Projects</a>
-      <a href="#" data-page="about">About</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#now">Now</a>
     </nav>
   </header>
 
@@ -81,5 +81,45 @@
       });
     });
   </script>
+  <script>
+  const links = document.querySelectorAll("nav a");
+  const sections = document.querySelectorAll(".page");
+
+  function showSection(id) {
+    sections.forEach(sec => {
+      sec.classList.remove("active", "fade-in");
+    });
+    const target = document.querySelector(id);
+    if (target) {
+      target.classList.add("active");
+      setTimeout(() => target.classList.add("fade-in"), 10);
+    }
+
+    links.forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === id);
+    });
+  }
+
+  // Handle nav click
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      history.pushState(null, "", href);
+      showSection(href);
+    });
+  });
+
+  // Handle hash on load
+  window.addEventListener("load", () => {
+    const hash = location.hash || "#home";
+    showSection(hash);
+  });
+
+  // Handle back/forward browser navigation
+  window.addEventListener("popstate", () => {
+    showSection(location.hash || "#home");
+  });
+</script>
 </body>
 </html>
