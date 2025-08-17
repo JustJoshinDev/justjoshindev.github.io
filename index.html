@@ -10,7 +10,6 @@
 <body>
   <header>
     <a href="#home" class="logo-link">
-      <img src="icon.png" alt="JP Logo" class="logo-icon" />
     </a>
     <h1>Josh Parker</h1>
     <nav>
@@ -32,20 +31,32 @@
     <p>This page is a reflection of what I'm currently focused on. Inspired by <a href="https://nownownow.com" target="_blank">nownownow.com</a>.</p>
     <ul>
       <li><strong>🎵 Music:</strong> Writing and producing original music — lots of experimenting with percussion and electric recently. Fav Artists RN: TOP, Half-Alive, Raynes.</li>
-      <li><strong>🧑‍💻 Programming:</strong> Working on mDirt v3 (and related projects) to make Minecraft datapack creation less painful.</li>
-      <li><strong>✍️ Writing:</strong> Expanding the Nexus storyline and worldbuilding across the Echoverse.</li>
-      <li><strong>📚 Reading:</strong> Just finished a Stormlight Archive reread and Fellowship of the Ring. Looking into some Sci-Fi stuff.</li>
-      <li><strong>🧠 Learning:</strong> Trying to get better at UI/UX design and animation in code. Brushing up on my backend coding; it's been a minute.</li>
+      <li><strong>🧑‍💻 Programming:</strong> This website, and anything that needs done for my CS class lol.</li>
+      <li><strong>✍️ Writing:</strong> Expanding the Nexus storyline and worldbuilding across the <a href="projects">Echoverse</a>.</li>
+      <li><strong>📚 Reading:</strong> Reading some more Star Wars: Legends, because I've collected way too many I haven't read.</li>
+      <li><strong>🧠 Learning:</strong> Trying to get better at backend coding, Joel usualy does that... Brushing up on my UI/UX design; it's been a minute.</li>
     </ul>
-   <p><em>Last updated: May 25, 2025</em></p>
+    <h2>Now Playing...</h2>
+    <p>Check out what I'm currently listening to on Spotify:</p>
+    <div id="spotify-widget">
+      <img id="spotify-art" src="https://i.scdn.co/image/ab67616d0000b273aaa954ffc9e1e606c17bad8d" alt="Album Art" />
+      <div id="spotify-info">
+        <a id="spotify-track" href="#" target="_blank">Loading...</a>
+        <p id="spotify-artist">Loading...</p>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>This is a widget made to pull my data from a HTTP server that holds data from Spotify's API. It is a REAL TIME representation of what I am listening to RIGHT NOW. It should update once every 15 seconds.</p>
+    <p>&nbsp;</p>
+    <p><em>Last updated: August 16, 2025</em></p>
   </section>
 
 
     <section id="projects" class="page">
       <h2>Projects</h2>
       <ul>
-        <li><strong>mDirt:</strong> A tool for easier Minecraft Datapack creation</li>
-        <li><strong>Echoverse:</strong> A unvierse or stories spaning across thousands of years on multiple planets. 
+        <li><strong>mDirt:</strong> A tool for easier Minecraft Datapack creation <a href="https://faith-and-code-technologies.github.io/mDirt/">View Here</a></li>
+        <li><strong>Echoverse:</strong> A unvierse or stories spaning across thousands of years on multiple planets, writen with my cousin Joel! See <a href="https://thejupiterdev.github.io/#worlds" target="_blank">his website</a> for more.</li>
         <li><strong>Music Projects:</strong> <a href="https://www.youtube.com/@Josh-Makes-Music" target="_blank">YouTube Channel</a></li>
       </ul>
     </section>
@@ -121,5 +132,46 @@
     showSection(location.hash || "#home");
   });
 </script>
+
+<script src="spotify_url.js"></script>
+<script>
+async function updateSpotifyWidget() {
+  const trackLink = document.getElementById('spotify-track');
+  const artistText = document.getElementById('spotify-artist');
+  const albumArt = document.getElementById('spotify-art');
+
+  try {
+    const response = await fetch(SPOTIFY_JSON_URL);
+    if (!response.ok) throw new Error('Network response was not ok');
+
+    const data = await response.json();
+
+    // If no song is playing
+    if (!data.track || !data.artist) {
+      trackLink.textContent = "No song playing";
+      trackLink.href = "#";
+      artistText.textContent = "";
+      albumArt.src = "";
+      return;
+    }
+
+    albumArt.src = data.cover_url || albumArt.src;
+    trackLink.textContent = data.track;
+    trackLink.href = data.url || "#";
+    artistText.textContent = data.artist;
+
+  } catch (err) {
+    console.error('Spotify widget error:', err);
+    trackLink.textContent = "Unable to load, server down?";
+    trackLink.href = "#";
+    artistText.textContent = "";
+    albumArt.src = "";
+  }
+}
+
+updateSpotifyWidget();
+setInterval(updateSpotifyWidget, 15000);
+</script>
+
 </body>
 </html>
