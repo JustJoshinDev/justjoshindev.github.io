@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -72,13 +72,20 @@
   </footer>
 
   <script>
+    console.log("🔍 Debug: Starting nav/page logic setup...");
+
     const navLinks = document.querySelectorAll("nav a");
     const pages = document.querySelectorAll(".page");
 
+    console.log("Nav links found:", navLinks.length);
+    console.log("Page sections found:", pages.length);
+
     navLinks.forEach(link => {
       link.addEventListener("click", e => {
+        console.log("🔗 Nav clicked:", link.href);
         e.preventDefault();
         const target = link.getAttribute("data-page");
+        console.log("Target data-page attribute:", target);
 
         pages.forEach(page => {
           page.classList.remove("active", "fade-in");
@@ -88,22 +95,33 @@
         link.classList.add("active");
 
         const targetPage = document.getElementById(target);
-        targetPage.classList.add("active", "fade-in");
+        console.log("Target page element:", targetPage);
+        if (targetPage) {
+          targetPage.classList.add("active", "fade-in");
+        } else {
+          console.warn("⚠️ No page found with ID:", target);
+        }
       });
     });
   </script>
   <script>
+  console.log("🔍 Debug: Starting nav hash/history logic...");
+
   const links = document.querySelectorAll("nav a");
   const sections = document.querySelectorAll(".page");
 
   function showSection(id) {
+    console.log("📄 showSection called with id:", id);
     sections.forEach(sec => {
       sec.classList.remove("active", "fade-in");
     });
     const target = document.querySelector(id);
+    console.log("Target section element:", target);
     if (target) {
       target.classList.add("active");
       setTimeout(() => target.classList.add("fade-in"), 10);
+    } else {
+      console.warn("⚠️ No section matched:", id);
     }
 
     links.forEach(link => {
@@ -111,9 +129,9 @@
     });
   }
 
-  // Handle nav click
   links.forEach(link => {
     link.addEventListener("click", e => {
+      console.log("🔗 Navigation click:", link.getAttribute("href"));
       e.preventDefault();
       const href = link.getAttribute("href");
       history.pushState(null, "", href);
@@ -121,18 +139,17 @@
     });
   });
 
-  // Handle hash on load
   window.addEventListener("load", () => {
     const hash = location.hash || "#home";
+    console.log("📂 Window load, hash:", hash);
     showSection(hash);
   });
 
-  // Handle back/forward browser navigation
   window.addEventListener("popstate", () => {
+    console.log("📂 Popstate detected, hash:", location.hash);
     showSection(location.hash || "#home");
   });
 </script>
-
 <script src="spotify_url.js"></script>
 <script>
 async function updateSpotifyWidget() {
@@ -140,14 +157,26 @@ async function updateSpotifyWidget() {
   const artistText = document.getElementById('spotify-artist');
   const albumArt = document.getElementById('spotify-art');
 
+  console.log("=== Spotify Widget Debug ===");
+  console.log("Attempting to fetch:", SPOTIFY_JSON_URL);
+
   try {
-    const response = await fetch(SPOTIFY_JSON_URL);
+    const response = await fetch(SPOTIFY_JSON_URL, {
+      headers: {
+        "ngrok-skip-browser-warning": "true"
+      }
+    });
+
+    console.log("Fetch completed. Status:", response.status, response.statusText);
+    console.log("Response headers:", [...response.headers.entries()]);
+
     if (!response.ok) throw new Error('Network response was not ok');
 
     const data = await response.json();
+    console.log("JSON data received:", data);
 
-    // If no song is playing
     if (!data.track || !data.artist) {
+      console.warn("No song currently playing");
       trackLink.textContent = "No song playing";
       trackLink.href = "#";
       artistText.textContent = "";
@@ -155,23 +184,28 @@ async function updateSpotifyWidget() {
       return;
     }
 
+    console.log("Updating widget with song:", data.track, "by", data.artist);
+
     albumArt.src = data.cover_url || albumArt.src;
     trackLink.textContent = data.track;
     trackLink.href = data.url || "#";
     artistText.textContent = data.artist;
 
   } catch (err) {
-    console.error('Spotify widget error:', err);
+    console.error("Spotify widget error:", err);
     trackLink.textContent = "Unable to load, server down?";
     trackLink.href = "#";
     artistText.textContent = "";
     albumArt.src = "";
   }
+
+  console.log("=== End of Spotify Widget Debug ===");
 }
 
 updateSpotifyWidget();
 setInterval(updateSpotifyWidget, 15000);
 </script>
+
 
 </body>
 </html>
