@@ -23,32 +23,20 @@
   <main>
     <section id="home" class="page active fade-in">
       <h2>Welcome!</h2>
-      <p>This is my personal site. I make music, write stories, and code in Python!</p>
+      <p>This is my personal site. I make music, write stories, build computers, and ocasionaly code in Python!</p>
     </section>
 
   <section id="now" class="page">
     <h2>What I'm Doing Now</h2>
     <p>This page is a reflection of what I'm currently focused on. Inspired by <a href="https://nownownow.com" target="_blank">nownownow.com</a>.</p>
     <ul>
-      <li><strong>🎵 Music:</strong> Writing and producing original music — lots of experimenting with percussion and electric recently. Fav Artists RN: TOP, Half-Alive, Raynes.</li>
-      <li><strong>🧑‍💻 Programming:</strong> This website, and anything that needs done for my CS class lol.</li>
-      <li><strong>✍️ Writing:</strong> Expanding the Nexus storyline and worldbuilding across the <a href="projects">Echoverse</a>.</li>
-      <li><strong>📚 Reading:</strong> Reading some more Star Wars: Legends, because I've collected way too many I haven't read.</li>
-      <li><strong>🧠 Learning:</strong> Trying to get better at backend coding, Joel usualy does that... Brushing up on my UI/UX design; it's been a minute.</li>
+      <li><strong>🎵 Music:</strong> (Trying to) Write and produce original music — trying to expand on my piano and electric skills. Fav Artists RN: TOP, Half-Alive, Raynes.</li>
+      <li><strong>🧑‍💻 Technology:</strong> Playing with homelabing and my home studio. </li>
+      <li><strong>✍️ Writing:</strong> The <a href="projects">Echoverse</a> is currently halted, and I'm trying to focus in on independent Kashiet lore.</li>
+      <li><strong>📚 Reading:</strong> Reading Mistborn by Brandon Sanderson.</li>
+      <li><strong>🧠 Learning:</strong> Trying to learn proper music production.</li>
     </ul>
-    <h2>Now Playing...</h2>
-    <p>Check out what I'm currently listening to on Spotify:</p>
-    <div id="spotify-widget">
-      <img id="spotify-art" src="https://i.scdn.co/image/ab67616d0000b273aaa954ffc9e1e606c17bad8d" alt="Album Art" />
-      <div id="spotify-info">
-        <a id="spotify-track" href="#" target="_blank">Loading...</a>
-        <p id="spotify-artist">Loading...</p>
-      </div>
-    </div>
-    <p>&nbsp;</p>
-    <p>This is a widget made to pull my data from a HTTP server that holds data from Spotify's API. It is a REAL TIME representation of what I am listening to RIGHT NOW. It should update once every 15 seconds.</p>
-    <p>&nbsp;</p>
-    <p><em>Last updated: August 16, 2025</em></p>
+    <p><em>Last updated: August 12, 2026</em></p>
   </section>
 
 
@@ -64,11 +52,12 @@
     <section id="about" class="page">
       <h2>About</h2>
       <p>Hey there! I'm Josh Parker — musician, coder, and storyteller.</p>
+      <p><a href="https://www.youtube.com/@Josh-Makes-Music" target="_blank">YouTube Channel</a></li></p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Josh Parker. All rights reserved.</p>
+    <p>© 2026 Josh Parker. All rights reserved.</p>
   </footer>
 
   <script>
@@ -150,62 +139,6 @@
     showSection(location.hash || "#home");
   });
 </script>
-<script src="spotify_url.js"></script>
-<script>
-async function updateSpotifyWidget() {
-  const trackLink = document.getElementById('spotify-track');
-  const artistText = document.getElementById('spotify-artist');
-  const albumArt = document.getElementById('spotify-art');
-
-  console.log("=== Spotify Widget Debug ===");
-  console.log("Attempting to fetch:", SPOTIFY_JSON_URL);
-
-  try {
-    const response = await fetch(SPOTIFY_JSON_URL, {
-      headers: {
-        "ngrok-skip-browser-warning": "true"
-      }
-    });
-
-    console.log("Fetch completed. Status:", response.status, response.statusText);
-    console.log("Response headers:", [...response.headers.entries()]);
-
-    if (!response.ok) throw new Error('Network response was not ok');
-
-    const data = await response.json();
-    console.log("JSON data received:", data);
-
-    if (!data.track || !data.artist) {
-      console.warn("No song currently playing");
-      trackLink.textContent = "No song playing";
-      trackLink.href = "#";
-      artistText.textContent = "";
-      albumArt.src = "";
-      return;
-    }
-
-    console.log("Updating widget with song:", data.track, "by", data.artist);
-
-    albumArt.src = data.cover_url || albumArt.src;
-    trackLink.textContent = data.track;
-    trackLink.href = data.url || "#";
-    artistText.textContent = data.artist;
-
-  } catch (err) {
-    console.error("Spotify widget error:", err);
-    trackLink.textContent = "Unable to load, server down?";
-    trackLink.href = "#";
-    artistText.textContent = "";
-    albumArt.src = "";
-  }
-
-  console.log("=== End of Spotify Widget Debug ===");
-}
-
-updateSpotifyWidget();
-setInterval(updateSpotifyWidget, 15000);
-</script>
-
 
 </body>
 </html>
