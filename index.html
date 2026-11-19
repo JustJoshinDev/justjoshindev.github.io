@@ -3,59 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="icon.png" type="image/png" />
+  <meta name="description" content="Josh Parker's personal site: music, stories, computers, and a little Python." />
   <title>Josh Parker</title>
+  <link rel="icon" href="icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <a href="#home" class="logo-link">
-    </a>
-    <h1>Josh Parker</h1>
-    <nav>
-      <a href="#home">Home</a>
+  <nav class="topbar" aria-label="Main">
+    <a href="#home" class="brand">Josh Parker</a>
+    <div class="links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#now">Now</a>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
   <main>
-    <section id="home" class="page active fade-in">
-      <h2>Welcome!</h2>
-      <p>This is my personal site. I make music, write stories, build computers, and ocasionaly code in Python!</p>
+    <section id="home" class="hero">
+      <div class="wrap">
+        <h1><span>Josh Parker</span></h1>
+        <p class="tagline">musician · coder · storyteller</p>
+        <p class="intro">This is my personal site. I make music, write stories, build computers, and occasionally code in Python!</p>
+        <a class="down" href="#about" aria-label="Scroll to About">↓</a>
+      </div>
     </section>
 
-  <section id="now" class="page">
-    <h2>What I'm Doing Now</h2>
-    <p>This page is a reflection of what I'm currently focused on. Inspired by <a href="https://nownownow.com" target="_blank">nownownow.com</a>.</p>
-    <ul>
-      <li><strong>🎵 Music:</strong> (Trying to) Write and produce original music — trying to expand on my piano and electric skills. Fav Artists RN: Geode Colaborative, TØP, Half•Alive.</li>
-      <li><strong>🧑‍💻 Technology:</strong> Playing with homelabing and my home studio. </li>
-      <li><strong>✍️ Writing:</strong> The <a href="#projects">Echoverse</a> is currently halted, and I'm trying to focus in on independent Kashiet lore.</li>
-      <li><strong>📚 Reading:</strong> Reading Mistborn by Brandon Sanderson.</li>
-      <li><strong>🧠 Learning:</strong> Trying to learn proper music production.</li>
-    </ul>
-    <p><em>Last updated: August 12, 2026</em></p>
-  </section>
-
-
-    <section id="projects" class="page">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>mDirt:</strong> A tool for easier Minecraft Datapack creation <a href="https://faith-and-code-technologies.github.io/mDirt/">View Here</a></li>
-        <li><strong>Echoverse:</strong> A unvierse or stories spaning across thousands of years on multiple planets, writen with my cousin Joel! See <a href="https://thejupiterdev.github.io/#worlds" target="_blank">his website</a> for more.</li>
-        <li><strong>Music Projects:</strong> <a href="https://www.youtube.com/@Josh-Makes-Music" target="_blank">YouTube Channel</a></li>
-      </ul>
+    <section id="about" class="band alt">
+      <div class="wrap">
+        <h2><span>About</span></h2>
+        <p>Hey there! I'm Josh Parker, a musician, coder, and storyteller.</p>
+        <div class="pills">
+          <a class="pill" href="https://www.youtube.com/@Josh-Makes-Music" target="_blank" rel="noopener">▶ YouTube Channel</a>
+          <a class="pill" href="https://www.tiktok.com/@joshuacovert1" target="_blank" rel="noopener">♪ TikTok Account</a>
+        </div>
+      </div>
     </section>
 
-    <section id="about" class="page">
-      <h2>About</h2>
-      <p>Hey there! I'm Josh Parker — musician, coder, and storyteller.</p>
-      <ul>
-        <li><a href="https://www.youtube.com/@Josh-Makes-Music" target="_blank">YouTube Channel</a></li>
-        <li><a href="https://www.tiktok.com/@joshuacovert1?_r=1&_t=ZT-98pSgomJAcA" target="_blank">TikTok Account</a></li>
-      </ul>  
+    <section id="projects" class="band">
+      <div class="wrap">
+        <h2><span>Projects</span></h2>
+        <div class="cards">
+          <article class="card">
+            <h3>mDirt</h3>
+            <p>A tool for easier Minecraft datapack creation.</p>
+            <a href="https://faith-and-code-technologies.github.io/mDirt/" target="_blank" rel="noopener">View here →</a>
+          </article>
+          <article class="card">
+            <h3>Music</h3>
+            <p>Songs and recordings by yours truely.</p>
+            <a href="https://www.youtube.com/@Josh-Makes-Music" target="_blank" rel="noopener">YouTube Channel →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="now" class="band alt">
+      <div class="wrap">
+        <h2><span>What I'm Doing Now</span></h2>
+        <p>A reflection of what I'm focused on lately. Inspired by <a href="https://nownownow.com" target="_blank" rel="noopener">nownownow.com</a>.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>🎵 Music</h3>
+            <p>(Trying to) write and produce original music, and grow my piano and bass guitar skills. Favorite artists right now: Geode Collaborative, TØP, and REN.</p>
+          </article>
+          <article class="card">
+            <h3>🧑‍💻 Technology</h3>
+            <p>Playing with homelabbing at home, as well as audio, video, and lighting for various applications.</p>
+          </article>
+          <article class="card">
+            <h3>✍️ Writing</h3>
+            <p>Not been writing much lately, but I'm planning to get back into it soon, working on written reviews on various things.</p>
+          </article>
+          <article class="card">
+            <h3>📚 Reading</h3>
+            <p>"Green Ember: Helmer and the Dragon Tomb" by S.D. Smith.</p>
+          </article>
+          <article class="card">
+            <h3>🧠 Learning</h3>
+            <p>How to be an adult lol.</p>
+          </article>
+        </div>
+        <p class="updated">Last updated: November 19, 2026</p>
+      </div>
+    </section>
+    <section id="nowplaying" class="band" hidden aria-live="polite">
+      <div class="wrap">
+        <div class="np-card">
+          <img id="np-art" src="" alt="" width="96" height="96" hidden />
+          <div class="np-info">
+            <p id="np-status" class="np-status">Now playing</p>
+            <a id="np-track" class="np-track" href="#" target="_blank" rel="noopener"></a>
+            <p id="np-artist" class="np-artist"></p>
+          </div>
+          <span class="np-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -63,85 +108,24 @@
     <p>© 2026 Josh Parker. All rights reserved.</p>
   </footer>
 
+  <script src="nowplaying.js"></script>
   <script>
-    console.log("🔍 Debug: Starting nav/page logic setup...");
-
-    const navLinks = document.querySelectorAll("nav a");
-    const pages = document.querySelectorAll(".page");
-
-    console.log("Nav links found:", navLinks.length);
-    console.log("Page sections found:", pages.length);
-
-    navLinks.forEach(link => {
-      link.addEventListener("click", e => {
-        console.log("🔗 Nav clicked:", link.href);
-        e.preventDefault();
-        const target = link.getAttribute("data-page");
-        console.log("Target data-page attribute:", target);
-
-        pages.forEach(page => {
-          page.classList.remove("active", "fade-in");
+    (function () {
+      var links = document.querySelectorAll(".topbar .links a");
+      var sections = document.querySelectorAll("main section");
+      if (!("IntersectionObserver" in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          links.forEach(function (a) {
+            var on = a.getAttribute("href") === "#" + e.target.id;
+            a.classList.toggle("active", on);
+            if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+          });
         });
-
-        navLinks.forEach(nav => nav.classList.remove("active"));
-        link.classList.add("active");
-
-        const targetPage = document.getElementById(target);
-        console.log("Target page element:", targetPage);
-        if (targetPage) {
-          targetPage.classList.add("active", "fade-in");
-        } else {
-          console.warn("⚠️ No page found with ID:", target);
-        }
-      });
-    });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      sections.forEach(function (s) { io.observe(s); });
+    })();
   </script>
-  <script>
-  console.log("🔍 Debug: Starting nav hash/history logic...");
-
-  const links = document.querySelectorAll("nav a");
-  const sections = document.querySelectorAll(".page");
-
-  function showSection(id) {
-    console.log("📄 showSection called with id:", id);
-    sections.forEach(sec => {
-      sec.classList.remove("active", "fade-in");
-    });
-    const target = document.querySelector(id);
-    console.log("Target section element:", target);
-    if (target) {
-      target.classList.add("active");
-      setTimeout(() => target.classList.add("fade-in"), 10);
-    } else {
-      console.warn("⚠️ No section matched:", id);
-    }
-
-    links.forEach(link => {
-      link.classList.toggle("active", link.getAttribute("href") === id);
-    });
-  }
-
-  links.forEach(link => {
-    link.addEventListener("click", e => {
-      console.log("🔗 Navigation click:", link.getAttribute("href"));
-      e.preventDefault();
-      const href = link.getAttribute("href");
-      history.pushState(null, "", href);
-      showSection(href);
-    });
-  });
-
-  window.addEventListener("load", () => {
-    const hash = location.hash || "#home";
-    console.log("📂 Window load, hash:", hash);
-    showSection(hash);
-  });
-
-  window.addEventListener("popstate", () => {
-    console.log("📂 Popstate detected, hash:", location.hash);
-    showSection(location.hash || "#home");
-  });
-</script>
-
 </body>
 </html>
