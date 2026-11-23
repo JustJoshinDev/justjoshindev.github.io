@@ -1,0 +1,60 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root { color-scheme: light only; }
+
+html { background: #f4f1ea; }
+
+body {
+  font-family: "Courier Prime", "Courier New", Courier, monospace;
+  font-size: clamp(1rem, .95rem + .3vw, 1.15rem);
+  line-height: 1.75;
+  color: #1a1a1a;
+  background: #f4f1ea;
+  width: min(40rem, 100% - 2.5rem);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vw, 5rem) 0 4rem;
+  overflow-wrap: break-word;
+}
+
+h1, h2 {
+  font-family: "Special Elite", "Courier New", monospace;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: .02em;
+}
+
+h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: .25rem; }
+h2 { font-size: 1.3rem; margin: 2.5rem 0 .75rem; }
+
+p { margin-bottom: 1.25rem; }
+
+a { color: inherit; text-underline-offset: 3px; }
+a:hover { background: #1a1a1a; color: #f4f1ea; text-decoration: none; }
+a:focus-visible { outline: 1px dashed #1a1a1a; outline-offset: 3px; }
+
+hr { border: 0; border-top: 1px dashed #1a1a1a; margin: 2rem 0; }
+
+.sub { color: #555; margin-bottom: 0; }
+
+.entries { list-style: none; }
+.entries li { padding: 1rem 0; border-bottom: 1px dashed #999; }
+.entries li:first-child { border-top: 1px dashed #999; }
+.entries a { font-family: "Special Elite", "Courier New", monospace; font-size: 1.15rem; }
+.entries .date { display: block; color: #555; font-size: .9em; }
+.entries .blurb { margin: .25rem 0 0; }
+
+.byline { color: #555; margin-bottom: 0; }
+.rating { margin-top: .25rem; }
+
+blockquote { padding-left: 1.25rem; border-left: 2px solid #1a1a1a; margin: 0 0 1.25rem; }
+
+.end { margin-top: 3rem; color: #555; }
+
+.prose p { margin: 0; text-indent: 2em; }
+.prose h1 + p, .prose hr + p, .prose h2 + p, .prose .break + p { text-indent: 0; }
+.prose p.sub { text-indent: 0; margin-bottom: 0; }
+.prose p.break { text-indent: 0; text-align: center; margin: 1.5rem 0; color: #555; }
+
+.toc { margin-top: 1.5rem; }
+.toc ol { list-style: none; }
+.toc li { padding: .15rem 0; }
