@@ -16,7 +16,7 @@
     <a href="#home" class="brand">Josh Parker</a>
     <div class="links">
       <a href="#about">About</a>
-      <a href="#projects">Projects</a>
+      <a href="#gallery">Gallery</a>
       <a href="#now">Now</a>
     </div>
   </nav>
@@ -26,7 +26,7 @@
       <div class="wrap">
         <h1><span>Josh Parker</span></h1>
         <p class="tagline">musician · coder · storyteller</p>
-        <p class="intro">This is my personal site. I make music, write stories, build computers, and occasionally code in Python!</p>
+        <p class="intro">This is my personal site. I make music, rig lights, build computers, and VERY occasionally code!</p>
         <a class="down" href="#about" aria-label="Scroll to About">↓</a>
       </div>
     </section>
@@ -42,56 +42,11 @@
       </div>
     </section>
 
-    <section id="projects" class="band">
+    <section id="nowplaying" class="band" hidden>
       <div class="wrap">
-        <h2><span>Projects</span></h2>
-        <div class="cards">
-          <article class="card">
-            <h3>mDirt</h3>
-            <p>A tool for easier Minecraft datapack creation.</p>
-            <a href="https://faith-and-code-technologies.github.io/mDirt/" target="_blank" rel="noopener">View here →</a>
-          </article>
-          <article class="card">
-            <h3>Music</h3>
-            <p>Songs and recordings by yours truely.</p>
-            <a href="https://www.youtube.com/@Josh-Makes-Music" target="_blank" rel="noopener">YouTube Channel →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="now" class="band alt">
-      <div class="wrap">
-        <h2><span>What I'm Doing Now</span></h2>
-        <p>A reflection of what I'm focused on lately. Inspired by <a href="https://nownownow.com" target="_blank" rel="noopener">nownownow.com</a>.</p>
-        <div class="cards">
-          <article class="card">
-            <h3>🎵 Music</h3>
-            <p>(Trying to) write and produce original music, and grow my piano and bass guitar skills. Favorite artists right now: Geode Collaborative, TØP, and REN.</p>
-          </article>
-          <article class="card">
-            <h3>🧑‍💻 Technology</h3>
-            <p>Playing with homelabbing at home, as well as audio, video, and lighting for various applications.</p>
-          </article>
-          <article class="card">
-            <h3>✍️ Writing</h3>
-            <p>Not been writing much lately, but I'm planning to get back into it soon, working on written reviews on various things.</p>
-          </article>
-          <article class="card">
-            <h3>📚 Reading</h3>
-            <p>"Green Ember: Helmer and the Dragon Tomb" by S.D. Smith.</p>
-          </article>
-          <article class="card">
-            <h3>🧠 Learning</h3>
-            <p>How to be an adult lol.</p>
-          </article>
-        </div>
-        <p class="updated">Last updated: November 19, 2026</p>
-      </div>
-    </section>
-    <section id="nowplaying" class="band" hidden aria-live="polite">
-      <div class="wrap">
-        <div class="np-card">
+        <h2><span>Now Playing</span></h2>
+        <p>A visualisation of the songs I'm listening to... LIVE!</p>
+        <div class="np-card" aria-live="polite">
           <img id="np-art" src="" alt="" width="96" height="96" hidden />
           <div class="np-info">
             <p id="np-status" class="np-status">Now playing</p>
@@ -102,10 +57,65 @@
         </div>
       </div>
     </section>
+
+    <section id="gallery" class="band alt">
+      <div class="wrap">
+        <h2><span>Gallery</span></h2>
+        <div class="cards">
+          <article class="card">
+            <h3>🎸 Music Gear</h3>
+            <p>The instruments and equipment I make music with.</p>
+            <a href="music.html">See the gallery →</a>
+          </article>
+          <article class="card">
+            <h3>🎛️ AV Work</h3>
+            <p>Audio, video, and lighting I've run and built out for various shows.</p>
+            <a href="av.html">See the gallery →</a>
+          </article>
+          <article class="card">
+            <h3>🖥️ Computing Work</h3>
+            <p>Custom builds and other computer projects.</p>
+            <a href="computing.html">See the gallery →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="now" class="band">
+      <div class="wrap">
+        <h2><span>What I'm Doing Now</span></h2>
+        <p>A reflection of what I'm focused on lately. Inspired by <a href="https://nownownow.com" target="_blank" rel="noopener">nownownow.com</a>.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>🎵 Music</h3>
+            <p>(Trying to) write and produce original music, and grow my piano and bass guitar skills. Favorite artists right now: Geode Collaborative, TØP, and REN.</p>
+          </article>
+          <article class="card">
+            <h3>🧑‍💻 Technology</h3>
+            <p>Playing with homelabbing at home, as well as audio, video, and lighting for various applications. Brushing up on my HTML in order to update this website!</p>
+          </article>
+          <article class="card">
+            <h3>✍️ Writing</h3>
+            <p>Not been writing much lately, but I'm planning to get back into it soon. If you want to read some content I threw some things in the Vault.</p>
+            <a href="vault.html">ENTER THE VAULT</a>
+          </article>
+          <article class="card">
+            <h3>📚 Reading</h3>
+            <p>"Green Ember: Helmer and the Dragon Tomb" by S.D. Smith.</p>
+          </article>
+          <article class="card">
+            <h3>🧠 Learning</h3>
+            <p>How to be an adult lol.</p>
+          </article>
+        </div>
+        <p class="updated">Last updated: November 22, 2026</p>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>© 2026 Josh Parker. All rights reserved.</p>
+    <p class="credit">Built with help from claude.ai, which wrote all of the JavaScript and CSS outside THE VAULT. All of the HTML is my own.</p>
   </footer>
 
   <script src="nowplaying.js"></script>

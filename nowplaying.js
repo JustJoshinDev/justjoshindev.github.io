@@ -1,13 +1,10 @@
-// ---- Fill these in ----------------------------------------------------
-const LASTFM_USER = "YOUR_LASTFM_USERNAME";
-const LASTFM_API_KEY = "YOUR_LASTFM_API_KEY";
-// ------------------------------------------------------------------------
+const LASTFM_USER = "archercat8";
+const LASTFM_API_KEY = "54769c1b563bffb69d53cdb185bea09b";
 
 (function () {
   var box = document.getElementById("nowplaying");
   if (!box) return;
 
-  // Stay hidden until configured so visitors never see a broken widget.
   if (LASTFM_USER.indexOf("YOUR_") === 0 || LASTFM_API_KEY.indexOf("YOUR_") === 0) return;
   box.hidden = false;
 
@@ -48,7 +45,7 @@ const LASTFM_API_KEY = "YOUR_LASTFM_API_KEY";
         var t = d && d.recenttracks && d.recenttracks.track && d.recenttracks.track[0];
         if (t) render(t); else box.hidden = true;
       })
-      .catch(function () { /* keep whatever is showing */ });
+      .catch(function () {});
   }
 
   load();
