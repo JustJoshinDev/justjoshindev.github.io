@@ -25,15 +25,28 @@ const LASTFM_API_KEY = "54769c1b563bffb69d53cdb185bea09b";
     var live = t["@attr"] && t["@attr"].nowplaying === "true";
     status.textContent = live ? "Now playing" : "Last played" + (t.date ? " · " + ago(t.date.uts) : "");
     box.classList.toggle("live", !!live);
+    box.classList.remove("offline");
 
     track.textContent = t.name;
     track.href = t.url;
+    track.hidden = false;
     artist.textContent = t.artist["#text"] || t.artist.name || "";
+    artist.hidden = false;
 
     var imgs = t.image || [];
     var src = (imgs[imgs.length - 2] || imgs[imgs.length - 1] || {})["#text"];
     if (src && src.indexOf("https://") === 0) { art.src = src; art.hidden = false; }
     else { art.hidden = true; }
+  }
+
+  function down() {
+    status.textContent = "Offline";
+    box.classList.remove("live");
+    box.classList.add("offline");
+    track.hidden = true;
+    art.hidden = true;
+    artist.textContent = "The server isn't responding right now. Sorry fam!";
+    artist.hidden = false;
   }
 
   function load() {
@@ -43,9 +56,9 @@ const LASTFM_API_KEY = "54769c1b563bffb69d53cdb185bea09b";
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var t = d && d.recenttracks && d.recenttracks.track && d.recenttracks.track[0];
-        if (t) render(t); else box.hidden = true;
+        if (t) render(t); else down();
       })
-      .catch(function () {});
+      .catch(down);
   }
 
   load();
